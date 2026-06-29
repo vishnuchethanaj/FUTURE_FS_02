@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'https://future-fs-02-mini-crm-frontend.onrender.com'
+  baseURL: typeof window !== 'undefined' && window.__API_URL__ || import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
 });
 
 // Attach JWT to every request if present
