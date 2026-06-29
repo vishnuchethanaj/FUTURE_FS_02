@@ -2,11 +2,12 @@ const router = require('express').Router();
 const auth = require('../middleware/auth');
 const c = require('../controllers/leadController');
 
-// All lead routes require authentication
-router.use(auth);
-
-router.get('/', c.list);
+// Public lead capture from contact form
 router.post('/', c.create);
+
+// Remaining lead routes require authentication
+router.use(auth);
+router.get('/', c.list);
 router.get('/:id', c.getOne);
 router.put('/:id', c.update);
 router.delete('/:id', c.remove);

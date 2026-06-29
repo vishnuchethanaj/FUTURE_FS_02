@@ -12,10 +12,11 @@ export default function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="brand">Mini CRM</div>
-      <NavLink to="/" end>Dashboard</NavLink>
-      <NavLink to="/analysis">Analysis</NavLink>
-      <NavLink to="/leads">Leads</NavLink>
-      <NavLink to="/profile">Profile</NavLink>
+      <NavLink to="/dashboard" end>Dashboard</NavLink>
+      <NavLink to="/dashboard/leads">Leads</NavLink>
+      <NavLink to="/dashboard/analytics">Analytics</NavLink>
+      <NavLink to="/dashboard/follow-ups">Follow-ups</NavLink>
+      <NavLink to="/dashboard/settings">Settings</NavLink>
       <div className="spacer" />
       <button onClick={handleLogout}>Logout</button>
     </aside>

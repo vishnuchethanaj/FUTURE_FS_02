@@ -41,13 +41,13 @@
     {
       "_id": "f62384a3-3380-4451-8d0b-58ed637167b6",
       "createdAt": "2026-06-28T17:07:25.618Z",
-      "updatedAt": "2026-06-28T17:07:25.618Z",
+      "updatedAt": "2026-06-29T18:31:41.633Z",
       "name": "Validation Lead",
       "email": "validation@example.com",
       "phone": "9999999999",
       "company": "test-co",
       "source": "website",
-      "status": "Contacted",
+      "status": "New",
       "followUpDate": "2026-06-29",
       "notes": [
         {
@@ -79,13 +79,13 @@
     {
       "_id": "269b268a-bfaf-4fba-9b1a-49af3e10943d",
       "createdAt": "2026-06-28T17:17:10.076Z",
-      "updatedAt": "2026-06-28T17:17:30.909Z",
+      "updatedAt": "2026-06-29T18:31:29.272Z",
       "name": "priya",
       "email": "priyaj@gmail.com",
       "phone": "9876543211",
       "company": "xyz",
       "source": "referal",
-      "status": "New",
+      "status": "Converted",
       "followUpDate": "2026-07-02",
       "notes": [
         {
@@ -95,27 +95,25 @@
         },
         {
           "text": "done i will charge 10000rs"
+        },
+        {
+          "text": "will meet"
         }
       ]
     },
     {
-      "_id": "1ece39a6-2cd0-4ec0-be1a-e93081b40654",
-      "createdAt": "2026-06-28T19:20:44.576Z",
-      "updatedAt": "2026-06-28T19:20:44.576Z",
-      "name": "jack",
-      "email": "jack@gmail.com",
-      "phone": "8976578909",
-      "company": "pqr",
-      "source": "website",
-      "status": "Converted",
-      "followUpDate": "2026-06-30",
-      "notes": [
-        {
-          "text": "check",
-          "createdAt": "2026-06-28T19:20:44.577Z",
-          "updatedAt": "2026-06-28T19:20:44.577Z"
-        }
-      ]
+      "_id": "0fb9bbc4-e403-467d-917b-3918f029e9cd",
+      "createdAt": "2026-06-29T19:13:01.839Z",
+      "updatedAt": "2026-06-29T19:13:01.839Z",
+      "name": "ram",
+      "email": "ram@gmail.com",
+      "phone": "",
+      "company": "abcd",
+      "message": "i need a website",
+      "source": "Website Contact",
+      "status": "New",
+      "followUpDate": null,
+      "notes": []
     }
   ]
 }

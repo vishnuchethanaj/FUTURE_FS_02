@@ -16,6 +16,7 @@ function normalizeLead(data = {}) {
     email: String(data.email || '').toLowerCase().trim(),
     phone: data.phone ? String(data.phone).trim() : '',
     company: data.company ? String(data.company).trim() : '',
+    message: data.message ? String(data.message).trim() : '',
     source: data.source ? String(data.source).trim() : '',
     status: ['New', 'Contacted', 'Converted'].includes(data.status) ? data.status : 'New',
     followUpDate: data.followUpDate || null,
@@ -34,6 +35,7 @@ function validateLeadUpdate(update = {}) {
     name: update.name != null ? String(update.name).trim() : update.name,
     phone: update.phone != null ? String(update.phone).trim() : update.phone,
     company: update.company != null ? String(update.company).trim() : update.company,
+    message: update.message != null ? String(update.message).trim() : update.message,
     source: update.source != null ? String(update.source).trim() : update.source,
   };
 }
