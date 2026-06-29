@@ -13,6 +13,7 @@ export default function Sidebar() {
     <aside className="sidebar">
       <div className="brand">Mini CRM</div>
       <NavLink to="/" end>Dashboard</NavLink>
+      <NavLink to="/analysis">Analysis</NavLink>
       <NavLink to="/leads">Leads</NavLink>
       <NavLink to="/profile">Profile</NavLink>
       <div className="spacer" />

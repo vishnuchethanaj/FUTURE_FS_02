@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import Analysis from './pages/Analysis';
 import Leads from './pages/Leads';
 import LeadDetail from './pages/LeadDetail';
 import Profile from './pages/Profile';
@@ -20,6 +21,7 @@ export default function App() {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/" element={<Protected><Dashboard /></Protected>} />
+      <Route path="/analysis" element={<Protected><Analysis /></Protected>} />
       <Route path="/leads" element={<Protected><Leads /></Protected>} />
       <Route path="/leads/:id" element={<Protected><LeadDetail /></Protected>} />
       <Route path="/profile" element={<Protected><Profile /></Protected>} />

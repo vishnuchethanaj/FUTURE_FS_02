@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
 
+const JWT_SECRET = process.env.JWT_SECRET || 'dev-secret';
+
 // Verifies the JWT in the Authorization header and attaches the user id.
 module.exports = function auth(req, res, next) {
   const header = req.headers.authorization || '';
@@ -7,7 +9,7 @@ module.exports = function auth(req, res, next) {
   if (!token) return res.status(401).json({ message: 'No token provided' });
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, JWT_SECRET);
     req.userId = decoded.id;
     next();
   } catch {

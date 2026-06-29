@@ -8,7 +8,7 @@ beginner-friendly, and easy to edit in VS Code.
 - **Frontend:** React (Vite), React Router, Axios, plain CSS
 - **Backend:** Node.js, Express
 - **Database:** MongoDB + Mongoose
-- **Auth:** JWT + bcrypt
+- **Auth:** JWT + bcrypt + Google OAuth
 
 ## Project Structure
 
@@ -16,7 +16,7 @@ beginner-friendly, and easy to edit in VS Code.
 client/                React + Vite frontend
   src/
     components/        Reusable UI (Sidebar, Modal, LeadForm, etc.)
-    pages/             Route pages (Login, Dashboard, Leads, LeadDetail, Profile)
+    pages/             Route pages (Login, Dashboard, Leads, LeadDetail, Profile, Analysis)
     services/          Axios API wrappers
     App.jsx
     main.jsx
@@ -41,7 +41,7 @@ server/                Express + MongoDB backend
 
 ```bash
 cd server
-cp .env.example .env       # edit MONGO_URI and JWT_SECRET
+cp .env.example .env       # edit MONGO_URI, JWT_SECRET, and Google OAuth values
 npm install
 npm run seed               # creates admin@crm.com / admin123
 npm run dev                # starts API on http://localhost:5000
@@ -64,6 +64,19 @@ npm run dev                # opens http://localhost:5173
 - Password: `admin123`
 
 You can create more admins via `POST /api/auth/register`.
+
+### 3. Google OAuth
+
+Add these values to `server/.env`:
+
+- `GOOGLE_CLIENT_ID`
+- `GOOGLE_CLIENT_SECRET`
+- `GOOGLE_REDIRECT_URI=http://localhost:5000/api/auth/google/callback`
+- `CLIENT_URL=http://localhost:8083`
+
+Then add `http://localhost:5000/api/auth/google/callback` to the authorized redirect URIs in Google Cloud Console.
+
+The login page will show a `Continue with Google` button and complete sign-in through the same JWT session used by email/password.
 
 ## API Reference
 

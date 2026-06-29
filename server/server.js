@@ -1,5 +1,5 @@
 // Entry point for the Mini CRM API server.
-require('dotenv').config();
+require('dotenv').config({ path: require('path').join(__dirname, '.env') });
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
@@ -29,4 +29,7 @@ const PORT = process.env.PORT || 5000;
 
 connectDB().then(() => {
   app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));
+}).catch((error) => {
+  console.error('Failed to start API:', error.message);
+  process.exit(1);
 });

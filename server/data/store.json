@@ -1,0 +1,121 @@
+{
+  "users": [
+    {
+      "_id": "1ac2cd5d-c8b0-4cf4-b8d9-d5dc5f4bd155",
+      "createdAt": "2026-06-28T15:02:58.566Z",
+      "updatedAt": "2026-06-28T15:02:58.566Z",
+      "name": "Admin",
+      "email": "admin@crm.com",
+      "password": "$2a$10$4dAKNcuLfHYDJ5d9tMfbEOdQNEdKQyyK0pwa.2xM3K3mRnUoKcjge"
+    },
+    {
+      "_id": "2ed6414a-99a5-4464-9ffc-cbadd869e670",
+      "createdAt": "2026-06-28T19:16:29.571Z",
+      "updatedAt": "2026-06-28T19:16:29.571Z",
+      "name": "vishnu",
+      "email": "vishnuchethana.j@gmail.com",
+      "password": "$2a$10$U70lJisxBb9vgZXRs960I.fsq4afDLcTvpEQ.cYKzLmSfWX/hUVQO",
+      "googleId": ""
+    }
+  ],
+  "leads": [
+    {
+      "_id": "6508d357-489a-44f3-813a-9c26aea0a3ea",
+      "createdAt": "2026-06-28T17:02:34.074Z",
+      "updatedAt": "2026-06-28T17:02:34.074Z",
+      "name": "Vishnuchethana Jogiparthi",
+      "email": "vishnuchethana.j@gmail.com",
+      "phone": "6301445774",
+      "company": "abc",
+      "source": "website",
+      "status": "Contacted",
+      "followUpDate": "2026-06-29",
+      "notes": [
+        {
+          "text": "hello",
+          "createdAt": "2026-06-28T17:02:34.074Z",
+          "updatedAt": "2026-06-28T17:02:34.074Z"
+        }
+      ]
+    },
+    {
+      "_id": "f62384a3-3380-4451-8d0b-58ed637167b6",
+      "createdAt": "2026-06-28T17:07:25.618Z",
+      "updatedAt": "2026-06-28T17:07:25.618Z",
+      "name": "Validation Lead",
+      "email": "validation@example.com",
+      "phone": "9999999999",
+      "company": "test-co",
+      "source": "website",
+      "status": "Contacted",
+      "followUpDate": "2026-06-29",
+      "notes": [
+        {
+          "text": "validation note",
+          "createdAt": "2026-06-28T17:07:25.619Z",
+          "updatedAt": "2026-06-28T17:07:25.619Z"
+        }
+      ]
+    },
+    {
+      "_id": "53a52272-4f71-4a7a-ac89-cf28af52de9f",
+      "createdAt": "2026-06-28T17:08:43.523Z",
+      "updatedAt": "2026-06-28T17:08:43.523Z",
+      "name": "Vishnuchethana Jogiparthi",
+      "email": "vishnuchethana.j@gmail.com",
+      "phone": "6301445774",
+      "company": "abc",
+      "source": "website",
+      "status": "Contacted",
+      "followUpDate": "2026-06-29",
+      "notes": [
+        {
+          "text": "hello",
+          "createdAt": "2026-06-28T17:08:43.524Z",
+          "updatedAt": "2026-06-28T17:08:43.524Z"
+        }
+      ]
+    },
+    {
+      "_id": "269b268a-bfaf-4fba-9b1a-49af3e10943d",
+      "createdAt": "2026-06-28T17:17:10.076Z",
+      "updatedAt": "2026-06-28T17:17:30.909Z",
+      "name": "priya",
+      "email": "priyaj@gmail.com",
+      "phone": "9876543211",
+      "company": "xyz",
+      "source": "referal",
+      "status": "New",
+      "followUpDate": "2026-07-02",
+      "notes": [
+        {
+          "text": "i want website",
+          "createdAt": "2026-06-28T17:17:10.077Z",
+          "updatedAt": "2026-06-28T17:17:10.077Z"
+        },
+        {
+          "text": "done i will charge 10000rs"
+        }
+      ]
+    },
+    {
+      "_id": "1ece39a6-2cd0-4ec0-be1a-e93081b40654",
+      "createdAt": "2026-06-28T19:20:44.576Z",
+      "updatedAt": "2026-06-28T19:20:44.576Z",
+      "name": "jack",
+      "email": "jack@gmail.com",
+      "phone": "8976578909",
+      "company": "pqr",
+      "source": "website",
+      "status": "Converted",
+      "followUpDate": "2026-06-30",
+      "notes": [
+        {
+          "text": "check",
+          "createdAt": "2026-06-28T19:20:44.577Z",
+          "updatedAt": "2026-06-28T19:20:44.577Z"
+        }
+      ]
+    }
+  ]
+}
