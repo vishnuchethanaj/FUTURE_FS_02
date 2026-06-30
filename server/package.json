@@ -5,10 +5,12 @@
   "type": "commonjs",
   "scripts": {
     "dev": "nodemon server.js",
-    "build:client": "npm --prefix ../client run build",
-    "start": "npm run seed && npm run build:client && node server.js",
+    "build:client": "npm --prefix ../client install && npm --prefix ../client run build",
+    "build": "npm run build:client",
+    "start": "npm run seed && node server.js",
     "seed": "node seed.js"
   },
+  "postinstall": "npm --prefix ../client install",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",

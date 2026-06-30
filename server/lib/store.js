@@ -1,10 +1,22 @@
 const fs = require('fs/promises');
+const fsSync = require('fs');
 const path = require('path');
 const { randomUUID } = require('crypto');
 
-const DATA_DIR = process.env.DATA_DIR || process.env.RENDER && process.env.RENDER === 'true'
-  ? '/data'
-  : path.join(__dirname, '..', 'data');
+const DEFAULT_DATA_DIR = path.join(__dirname, '..', 'data');
+function canWriteDir(dir) {
+  try {
+    if (!fsSync.existsSync(dir)) return false;
+    fsSync.accessSync(dir, fsSync.constants.W_OK);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+const explicitDataDir = process.env.DATA_DIR || null;
+const candidateDataDir = explicitDataDir || (process.env.RENDER === 'true' ? '/data' : null) || (fsSync.existsSync('/data') ? '/data' : null);
+const DATA_DIR = canWriteDir(candidateDataDir) ? candidateDataDir : DEFAULT_DATA_DIR;
 const DATA_FILE = process.env.STORE_FILE || path.join(DATA_DIR, 'store.json');
 
 let state;
