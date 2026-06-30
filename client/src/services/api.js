@@ -1,7 +1,15 @@
 import axios from 'axios';
 
+const runtimeApi = typeof window !== 'undefined' && window.__API_URL__ && String(window.__API_URL__).trim();
+const isLocalDev = typeof window !== 'undefined' && ['localhost', '127.0.0.1'].includes(window.location.hostname);
+const fallbackApi = import.meta.env.VITE_API_URL && String(import.meta.env.VITE_API_URL).trim()
+  ? String(import.meta.env.VITE_API_URL).trim()
+  : isLocalDev
+    ? 'http://localhost:5000/api'
+    : `${window.location.origin}/api`;
+
 const api = axios.create({
-  baseURL: typeof window !== 'undefined' && window.__API_URL__ || import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL: runtimeApi || fallbackApi,
 });
 
 // Attach JWT to every request if present
