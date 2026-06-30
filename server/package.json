@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon server.js",
     "build:client": "npm --prefix ../client run build",
-    "start": "npm run build:client && node server.js",
+    "start": "npm run seed && npm run build:client && node server.js",
     "seed": "node seed.js"
   },
   "dependencies": {

@@ -2,8 +2,10 @@ const fs = require('fs/promises');
 const path = require('path');
 const { randomUUID } = require('crypto');
 
-const DATA_DIR = path.join(__dirname, '..', 'data');
-const DATA_FILE = path.join(DATA_DIR, 'store.json');
+const DATA_DIR = process.env.DATA_DIR || process.env.RENDER && process.env.RENDER === 'true'
+  ? '/data'
+  : path.join(__dirname, '..', 'data');
+const DATA_FILE = process.env.STORE_FILE || path.join(DATA_DIR, 'store.json');
 
 let state;
 
@@ -26,6 +28,8 @@ function nowIso() {
 async function loadState() {
   if (state) return state;
 
+  await fs.mkdir(path.dirname(DATA_FILE), { recursive: true });
+
   try {
     const raw = await fs.readFile(DATA_FILE, 'utf8');
     const parsed = JSON.parse(raw);
@@ -42,7 +46,7 @@ async function loadState() {
 }
 
 async function saveState() {
-  await fs.mkdir(DATA_DIR, { recursive: true });
+  await fs.mkdir(path.dirname(DATA_FILE), { recursive: true });
   await fs.writeFile(DATA_FILE, JSON.stringify(state, null, 2));
 }
 
