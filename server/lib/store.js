@@ -262,4 +262,5 @@ module.exports = {
   deleteById,
   loadState,
   saveState,
+  STORE_FILE: DATA_FILE,
 };

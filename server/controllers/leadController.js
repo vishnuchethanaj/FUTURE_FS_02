@@ -28,8 +28,22 @@ exports.create = async (req, res) => {
   if (!name || !email) {
     return res.status(400).json({ message: 'Name and email are required' });
   }
-  const lead = await Lead.create(req.body);
-  res.status(201).json(lead);
+  try {
+    // Log incoming lead for deploy debugging
+    console.log('Creating lead:', { name, email, source: req.body.source || null });
+    const lead = await Lead.create(req.body);
+    // Log result and store file path if available
+    try {
+      const store = require('../lib/store');
+      console.log('Lead saved. store file:', store.STORE_FILE || process.env.STORE_FILE || 'not-set');
+    } catch (e) {
+      console.log('Lead saved. store file unknown');
+    }
+    res.status(201).json(lead);
+  } catch (err) {
+    console.error('Failed to create lead:', err && err.message);
+    res.status(500).json({ message: 'Failed to create lead' });
+  }
 };
 
 // PUT /api/leads/:id

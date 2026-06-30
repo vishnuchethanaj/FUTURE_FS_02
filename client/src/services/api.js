@@ -6,11 +6,16 @@ const fallbackApi = import.meta.env.VITE_API_URL && String(import.meta.env.VITE_
   ? String(import.meta.env.VITE_API_URL).trim()
   : isLocalDev
     ? 'http://localhost:5000/api'
-    : `${window.location.origin}/api`;
+    : '/api';
 
+const baseURL = runtimeApi || fallbackApi;
 const api = axios.create({
-  baseURL: runtimeApi || fallbackApi,
+  baseURL,
 });
+
+if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'production') {
+  console.info('[API] baseURL:', baseURL);
+}
 
 // Attach JWT to every request if present
 api.interceptors.request.use((config) => {
