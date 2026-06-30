@@ -29,16 +29,9 @@ exports.create = async (req, res) => {
     return res.status(400).json({ message: 'Name and email are required' });
   }
   try {
-    // Log incoming lead for deploy debugging
     console.log('Creating lead:', { name, email, source: req.body.source || null });
     const lead = await Lead.create(req.body);
-    // Log result and store file path if available
-    try {
-      const store = require('../lib/store');
-      console.log('Lead saved. store file:', store.STORE_FILE || process.env.STORE_FILE || 'not-set');
-    } catch (e) {
-      console.log('Lead saved. store file unknown');
-    }
+    console.log('Lead saved:', lead._id);
     res.status(201).json(lead);
   } catch (err) {
     console.error('Failed to create lead:', err && err.message);

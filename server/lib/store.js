@@ -6,6 +6,7 @@ const { randomUUID } = require('crypto');
 const DEFAULT_DATA_DIR = path.join(__dirname, '..', 'data');
 function canWriteDir(dir) {
   try {
+    if (!dir || typeof dir !== 'string') return false;
     if (!fsSync.existsSync(dir)) return false;
     fsSync.accessSync(dir, fsSync.constants.W_OK);
     return true;

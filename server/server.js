@@ -23,11 +23,12 @@ app.use('/api/leads', leadRoutes);
 // Debug endpoint to inspect stored data during deploy troubleshooting
 app.get('/__debug/store', async (_req, res) => {
   try {
-    const store = await require('./lib/store').loadState();
-    return res.json({ ok: true, storeFile: process.env.STORE_FILE || null, dataDir: process.env.DATA_DIR || null, store });
+    const Lead = require('./models/Lead');
+    const leads = await Lead.find({}).lean();
+    return res.json({ ok: true, mongoUri: process.env.MONGO_URI || null, count: leads.length, leads });
   } catch (err) {
-    console.error('Failed to read store:', err.message);
-    return res.status(500).json({ ok: false, message: 'Failed to read store', error: err.message });
+    console.error('Failed to read leads:', err.message);
+    return res.status(500).json({ ok: false, message: 'Failed to read leads', error: err.message });
   }
 });
 
@@ -52,12 +53,7 @@ app.use((err, _req, res, _next) => {
 const PORT = process.env.PORT || 5000;
 
 connectDB().then(() => {
-  try {
-    const store = require('./lib/store');
-    console.log('Using store file:', store.STORE_FILE || process.env.STORE_FILE || 'not-set');
-  } catch (e) {
-    console.log('Store info unavailable:', e.message);
-  }
+  console.log('MongoDB ready');
   app.listen(PORT, () => console.log(`API running on http://localhost:${PORT}`));
 }).catch((error) => {
   console.error('Failed to start API:', error.message);

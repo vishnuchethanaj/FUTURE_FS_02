@@ -1,24 +1,25 @@
-const { Query, findOne, findById, create } = require('../lib/store');
+const mongoose = require('mongoose');
 
-function normalizeUser(data = {}) {
-  return {
-    name: String(data.name || '').trim(),
-    email: String(data.email || '').toLowerCase().trim(),
-    password: String(data.password || ''),
-    googleId: String(data.googleId || '').trim(),
-  };
-}
-
-module.exports = {
-  findOne(query) {
-    return new Query(() => findOne('users', query));
+const userSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true, trim: true },
+    email: { type: String, required: true, trim: true, lowercase: true, unique: true },
+    password: { type: String, trim: true, default: '' },
+    googleId: { type: String, trim: true, default: '' },
   },
+  { timestamps: true }
+);
 
-  findById(id) {
-    return new Query(() => findById('users', id));
+userSchema.set('toJSON', {
+  virtuals: true,
+  versionKey: false,
+  transform(_, ret) {
+    ret.id = ret._id;
+    delete ret._id;
+    delete ret.password;
+    return ret;
   },
+});
 
-  create(data) {
-    return create('users', data, normalizeUser);
-  },
-};
+const User = mongoose.models.User || mongoose.model('User', userSchema);
+module.exports = User;
