@@ -6,7 +6,7 @@ const fallbackApi = import.meta.env.VITE_API_URL && String(import.meta.env.VITE_
   ? String(import.meta.env.VITE_API_URL).trim()
   : isLocalDev
     ? 'http://localhost:5000/api'
-    : '/api';
+    : 'https://future-fs-02-mini-crm-backend.onrender.com/api';
 
 const baseURL = runtimeApi || fallbackApi;
 const api = axios.create({
