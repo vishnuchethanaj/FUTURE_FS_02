@@ -1,9 +1,23 @@
 import React, { useState, useEffect } from 'react';
-
+import { fetchLeads } from '../services/leads';
 
 export default function Settings() {
   const [isDesktop, setIsDesktop] = useState(true);
   const [activeTab, setActiveTab] = useState('profile');
+  const [leads, setLeads] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchLeads()
+      .then(setLeads)
+      .finally(() => setLoading(false));
+  }, []);
+
+  const stats = {
+    total: leads.length,
+    converted: leads.filter((lead) => lead.status === 'Converted').length,
+    active: leads.filter((lead) => lead.status !== 'Converted').length,
+  };
 
   // Interactive mock states to show it works
   const [profileData, setProfileData] = useState({
@@ -67,9 +81,9 @@ export default function Settings() {
             gap: '1.5rem'
           }}>
             {[
-              { total: '5', title: 'Total leads', color: '#2563EB', bg: '#EFF6FF' },
-              { total: '1', title: 'Converted', color: '#10B981', bg: '#F0FDFA' },
-              { total: '4', title: 'Active leads', color: '#F59E0B', bg: '#FEF3C7' }
+              { total: loading ? '...' : stats.total, title: 'Total leads', color: '#2563EB', bg: '#EFF6FF' },
+              { total: loading ? '...' : stats.converted, title: 'Converted', color: '#10B981', bg: '#F0FDFA' },
+              { total: loading ? '...' : stats.active, title: 'Active leads', color: '#F59E0B', bg: '#FEF3C7' }
             ].map((stat, idx) => (
               <div key={idx} style={{
                 backgroundColor: '#FFFFFF',
