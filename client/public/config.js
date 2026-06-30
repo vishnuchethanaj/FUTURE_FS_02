@@ -1,8 +1,7 @@
 // Runtime config for the frontend.
-// Default to same-origin /api so the deployed app can reach the backend on the same host.
-// If your API is hosted on a different domain, replace the value below with that URL.
-window.__API_URL__ = window.__API_URL__ || '/api';
+// Set the API URL to your deployed backend so the frontend does not call /api on the frontend host.
+window.__API_URL__ = window.__API_URL__ || 'https://future-fs-02-mini-crm-backend.onrender.com/api';
 
-// Example: if your backend is hosted separately, set this URL to the backend API origin.
+// If you deploy the backend elsewhere, replace the URL below with that backend API origin.
 // window.__API_URL__ = 'https://your-backend-host.com/api';
  
