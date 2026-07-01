@@ -38,6 +38,12 @@ export default function LeadForm({ initial, onSubmit, onCancel }) {
     setSaving(true);
     try {
       const payload = { ...form };
+      delete payload._id;
+      delete payload.id;
+      delete payload.createdAt;
+      delete payload.updatedAt;
+      delete payload.__v;
+
       if (!payload.followUpDate) delete payload.followUpDate;
       // Only send notes as an initial note when creating
       if (!initial && payload.notes) {
