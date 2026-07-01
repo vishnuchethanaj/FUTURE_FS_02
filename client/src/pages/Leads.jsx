@@ -109,14 +109,16 @@ export default function Leads() {
                     <td>{formatDate(l.followUpDate)}</td>
                     <td>
                       <div className="row-actions">
-                        <Link to={`/leads/${l._id}`} className="btn btn-sm">View</Link>
+                        <Link to={`${l._id}`} className="btn btn-sm">View</Link>
                         <button
+                          type="button"
                           className="btn btn-sm"
                           onClick={() => { setEditing(l); setShowForm(true); }}
                         >
                           Edit
                         </button>
                         <button
+                          type="button"
                           className="btn btn-sm btn-danger"
                           onClick={() => handleDelete(l._id)}
                         >

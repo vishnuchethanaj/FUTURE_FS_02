@@ -7,6 +7,7 @@ export default function Contact() {
   const [error, setError] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [company, setCompany] = useState('');
   const [date, setDate] = useState('');
   const [message, setMessage] = useState('');
@@ -20,6 +21,7 @@ export default function Contact() {
       await createLead({
         name,
         email,
+        phone,
         company,
         followUpDate: date,
         message,
@@ -29,6 +31,7 @@ export default function Contact() {
       setSubmitted(true);
       setName('');
       setEmail('');
+      setPhone('');
       setCompany('');
       setDate('');
       setMessage('');
@@ -78,6 +81,11 @@ export default function Contact() {
               <div className="form-row">
                 <label>Email</label>
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+              </div>
+
+              <div className="form-row">
+                <label>Mobile</label>
+                <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} />
               </div>
 
               <div className="form-row">
